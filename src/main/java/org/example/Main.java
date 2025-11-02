@@ -18,7 +18,13 @@ public class Main {
             case "+" -> System.out.println("Addition: " + calculator.addition());
             case "-" -> System.out.println("Subtraction: " + calculator.subtraction());
             case "*" -> System.out.println("Multiplication: " + calculator.multiplication());
-            case "/" -> System.out.println("Division: " + calculator.division());
+            case "/" -> {
+                try {
+                    System.out.println("Division: " + calculator.division());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
     }
 }

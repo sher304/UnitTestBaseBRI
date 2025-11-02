@@ -24,12 +24,39 @@ public class Calculator {
         return A * B;
     }
 
-    public double division() {
-        return A / B;
+    public double division() throws Exception {
+        if (B != 0) return A / B;
+        else throw new Exception("Zero division error!");
+    }
+
+    public double getA() {
+        return A;
+    }
+
+    public void setA(double a) {
+        A = a;
+    }
+
+    public double getB() {
+        return B;
+    }
+
+    public void setB(double b) {
+        B = b;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     @Override
     public String toString() {
         return A + " " + symbol + " " + B;
     }
+
+
 }
