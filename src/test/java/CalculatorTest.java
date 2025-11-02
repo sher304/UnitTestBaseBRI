@@ -31,7 +31,7 @@ public class CalculatorTest {
     public void multiplicationCorrectnessCalculation() {
         calculator.setA(10);
         calculator.setB(5);
-        assertEquals(calculator.multiplication(), 50, "Multiplication 10 * 5 = 50!");
+        assertEquals(50, calculator.multiplication(), "Multiplication 10 * 5 = 50!");
     }
 
     @Test
@@ -39,9 +39,49 @@ public class CalculatorTest {
         calculator.setA(10);
         calculator.setB(5);
         try {
-            assertEquals(calculator.division(), 2, "Division 10 / 5 = 2!");
+            assertEquals(2, calculator.division(),  "Division 10 / 5 = 2!");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    public void additionWithNegativeNumberCalculation() {
+        calculator.setA(-5);
+        calculator.setB(2);
+        assertEquals(-3, calculator.addition(), "Addition -5 + 2 = -3!");
+    }
+
+    @Test
+    public void subtractionWithNegativeNumberCalculation() {
+        calculator.setA(-5);
+        calculator.setB(-2);
+        assertEquals(-7, calculator.subtraction(), "subtraction -5 - (-2) = -3!");
+    }
+
+    @Test
+    public void multiplicationWithNegativeNumberCalculation() {
+        calculator.setA(-5);
+        calculator.setB(-2);
+        assertEquals(10, calculator.multiplication(), "multiplication -5 * (-2) = 10!");
+    }
+
+    @Test
+    public void divisionWithNegativeNumberCalculation() {
+        calculator.setA(-15);
+        calculator.setB(-3);
+        try {
+            assertEquals(5, calculator.division(), "division -15 / (-3) = 5!");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void multiplicationWithZeroNumberCalculation() {
+        calculator.setA(0);
+        calculator.setB(2);
+        assertEquals(0, calculator.multiplication(), "multiplication 0 * 2 = 0!");
+    }
+
 }
