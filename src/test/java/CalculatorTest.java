@@ -53,10 +53,10 @@ public class CalculatorTest {
     }
 
     @Test
-    public void subtractionWithNegativeNumberCalculation() {
+    public void additionWithNegativeNumbersCalculation() {
         calculator.setA(-5);
         calculator.setB(-2);
-        assertEquals(-7, calculator.subtraction(), "subtraction -5 - (-2) = -3!");
+        assertEquals(-7, calculator.addition(), "subtraction -5 + (-2) = -7!");
     }
 
     @Test
@@ -82,6 +82,42 @@ public class CalculatorTest {
         calculator.setA(0);
         calculator.setB(2);
         assertEquals(0, calculator.multiplication(), "multiplication 0 * 2 = 0!");
+    }
+
+    @Test
+    public void testAdditionWithLargeNumbers() {
+        calculator.setA(Double.MAX_VALUE);
+        calculator.setB(Double.MAX_VALUE);
+        assertTrue(Double.isInfinite(calculator.addition()),
+                "Double.MAX_VALUE + Double.MAX_VALUE = Infinity!");
+    }
+
+    @Test
+    public void testDivisionResultingInInfinity() throws Exception {
+        calculator.setA(5);
+        calculator.setB(Double.MIN_VALUE);
+        assertTrue(Double.isInfinite(calculator.division()), "Division by a very small number = Infinity!");
+    }
+
+    @Test
+    public void testOperationWithNaN() {
+        calculator.setA(Double.NaN);
+        calculator.setB(5);
+        assertTrue(Double.isNaN(calculator.addition()), "NaN + 5 = NaN!");
+    }
+
+    @Test
+    public void testSymbolGetterSetter() {
+        calculator.setSymbol("+");
+        assertEquals("+", calculator.getSymbol());
+    }
+
+    @Test
+    public void testToStringFormat() {
+        calculator.setA(3);
+        calculator.setB(4);
+        calculator.setSymbol("*");
+        assertEquals("3.0 * 4.0", calculator.toString());
     }
 
 }
